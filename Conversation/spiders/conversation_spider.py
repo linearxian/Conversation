@@ -76,7 +76,12 @@ class JDConversationSpider(CrawlSpider):
     name = "JDConversation"
     download_delay = 3
     start_urls = [
-        "http://list.jd.com/list.html?cat=9987,653,655&page=1&delivery=1&sort=sort_rank_asc&trans=1&JL=4_10_0#J_main"
+        # "http://list.jd.com/list.html?cat=9987,653,655&page=1&delivery=1&sort=sort_rank_asc&trans=1&JL=4_10_0#J_main"
+        'http://list.jd.com/list.html?cat=737,794,798',
+        'http://list.jd.com/list.html?cat=737,794,870',
+        'http://list.jd.com/list.html?cat=737,794,880',
+        'http://list.jd.com/list.html?cat=737,794,878',
+        'http://coll.jd.com/list.html?sub=4932',
     ]
 
     def parse(self,response):
