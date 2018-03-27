@@ -77,11 +77,12 @@ class JDConversationSpider(CrawlSpider):
     download_delay = 3
     start_urls = [
         # "http://list.jd.com/list.html?cat=9987,653,655&page=1&delivery=1&sort=sort_rank_asc&trans=1&JL=4_10_0#J_main"
-        'http://list.jd.com/list.html?cat=737,794,798',
-        'http://list.jd.com/list.html?cat=737,794,870',
-        'http://list.jd.com/list.html?cat=737,794,880',
-        'http://list.jd.com/list.html?cat=737,794,878',
-        'http://coll.jd.com/list.html?sub=4932',
+        # 'http://list.jd.com/list.html?cat=737,794,798',
+        # 'http://list.jd.com/list.html?cat=737,794,870',
+        # 'http://list.jd.com/list.html?cat=737,794,880',
+        # 'http://list.jd.com/list.html?cat=737,794,878',
+        # 'http://coll.jd.com/list.html?sub=4932',
+        'http://list.jd.com/list.html?cat=670,671,672'
     ]
 
     def parse(self,response):
@@ -96,6 +97,7 @@ class JDConversationSpider(CrawlSpider):
                         for data in data_list:
                             item['content'] = data
                             yield item
+                    time.sleep(60)
             except Exception:
                 print('--------------ERROR--------------')
 
