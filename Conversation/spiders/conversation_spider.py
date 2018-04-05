@@ -82,7 +82,8 @@ class JDConversationSpider(CrawlSpider):
         # 'http://list.jd.com/list.html?cat=737,794,880',
         # 'http://list.jd.com/list.html?cat=737,794,878',
         # 'http://coll.jd.com/list.html?sub=4932',
-        'http://list.jd.com/list.html?cat=670,671,672'
+        # 'http://list.jd.com/list.html?cat=670,671,672'
+        'http://list.jd.com/list.html?cat=670,12800,12801'
     ]
 
     def parse(self,response):
