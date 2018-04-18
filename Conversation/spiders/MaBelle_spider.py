@@ -23,10 +23,7 @@ class mabelleSpider(CrawlSpider):
     allowed_domains = ['mabelle.com'
     ]
 
-    start_urls = []
-    for i in range(1,119):
-        url = 'https://www.mabelle.com/eu/chs/products/,,,,,,,,,20,%d' % i
-        start_urls.append(url)
+    start_urls = ['https://www.mabelle.com/eu/chs/products/,,,,,,,,,3000,1']
 
     rules = (
         Rule(
@@ -39,7 +36,7 @@ class mabelleSpider(CrawlSpider):
 
     def parse_item(self, response):
         try:
-            title_zh = response.xpath('normalize-space(//*[@id="productName"])').extract()
+            title_zh = response.xpath('normalize-space(//*[@id="productName"])').extract_first()
             desc_zh = response.xpath('normalize-space(//*[@id="mobile-wrapper"]/div[2]/div[2]/p[3])').extract_first()
             if desc_zh:
                 url_en = response.url.replace('eu/chs', 'eu/eng')
@@ -53,11 +50,12 @@ class mabelleSpider(CrawlSpider):
         item['Title_zh'] = response.meta['Title']
         item['Desc_zh'] = response.meta['Desc']
         try:
-            item['Title_en'] = response.xpath('normalize-space(//*[@id="productName"])').extract()
+            item['Title_en'] = response.xpath('normalize-space(//*[@id="productName"])').extract_first()
             item['Desc_en'] = response.xpath('normalize-space(//*[@id="mobile-wrapper"]/div[2]/div[2]/p[3])').extract_first()
             yield item
         except Exception as e:
             logging.exception("parse error")
+
 
 def run():
     configure_logging()
