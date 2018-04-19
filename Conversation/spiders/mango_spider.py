@@ -90,7 +90,7 @@ class MangoSpider(CrawlSpider):
 def run():
     configure_logging()
     runner = CrawlerRunner(get_project_settings())
-    d = runner.crawl(HMSpider)
+    d = runner.crawl(MangoSpider)
     d.addBoth(lambda _: reactor.stop())
     reactor.run() # the script will block here until the crawling is finished
 

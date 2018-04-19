@@ -18,7 +18,7 @@ class JDConversationSpider(CrawlSpider):
     name = "JDConversation"
     download_delay = 3
     start_urls = [
-        'http://list.jd.com/list.html?cat=652,829',
+        'http://list.jd.com/list.html?cat=1318,1466',
     ]
 
     def parse(self,response):

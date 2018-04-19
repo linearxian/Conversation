@@ -37,8 +37,13 @@ class mabelleSpider(CrawlSpider):
     def parse_item(self, response):
         try:
             title_zh = response.xpath('normalize-space(//*[@id="productName"])').extract_first()
-            desc_zh = response.xpath('normalize-space(//*[@id="mobile-wrapper"]/div[2]/div[2]/p[3])').extract_first()
-            if desc_zh:
+            if response.xpath('normalize-space(//*[@id="mobile-wrapper"]/div[2]/div[2]/p[3])').extract_first():
+                desc_zh = response.xpath('normalize-space(//*[@id="mobile-wrapper"]/div[2]/div[2]/p[3])').extract_first()
+            elif response.xpath('normalize-space(//*[@id="mobile-wrapper"]/div[2]/div[2]/p[2])').extract_first():
+                desc_zh = response.xpath('normalize-space(//*[@id="mobile-wrapper"]/div[2]/div[2]/p[2])').extract_first()
+            else:
+                desc_zh = []
+            if title_zh:
                 url_en = response.url.replace('eu/chs', 'eu/eng')
                 request = scrapy.Request(url_en, callback=self.parse_item_en, meta={'Title': title_zh, 'Desc': desc_zh})
                 yield request
@@ -51,7 +56,12 @@ class mabelleSpider(CrawlSpider):
         item['Desc_zh'] = response.meta['Desc']
         try:
             item['Title_en'] = response.xpath('normalize-space(//*[@id="productName"])').extract_first()
-            item['Desc_en'] = response.xpath('normalize-space(//*[@id="mobile-wrapper"]/div[2]/div[2]/p[3])').extract_first()
+            if response.xpath('normalize-space(//*[@id="mobile-wrapper"]/div[2]/div[2]/p[3])').extract_first():
+                item['Desc_en'] = response.xpath('normalize-space(//*[@id="mobile-wrapper"]/div[2]/div[2]/p[3])').extract_first()
+            elif response.xpath('normalize-space(//*[@id="mobile-wrapper"]/div[2]/div[2]/p[2])').extract_first():
+                item['Desc_en'] = response.xpath('normalize-space(//*[@id="mobile-wrapper"]/div[2]/div[2]/p[2])').extract_first()
+            else:
+                item['Desc_en'] = []
             yield item
         except Exception as e:
             logging.exception("parse error")

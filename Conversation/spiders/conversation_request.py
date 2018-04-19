@@ -67,7 +67,7 @@ def parse_Product(p_id):
             time.sleep(5)
 
 def run():
-    with open("./PID/PID_AirConditioner.json") as f:
+    with open("./PID/PID_babycare.json") as f:
         for line in f:
             try:
                 pid = re.findall(r'"PID": "(.*?)"', line)[0]
