@@ -14,12 +14,12 @@ BOT_NAME = 'Conversation'
 SPIDER_MODULES = ['Conversation.spiders']
 NEWSPIDER_MODULE = 'Conversation.spiders'
 
-FEED_URI = '/Users/xianwu1/Documents/crawler/scrapy/Conversation/Conversation/tmp/result.json'
+FEED_URI = '/home/xianwu1/crawler/result.json'
 FEED_FORMAT = 'json'
 FEED_EXPORT_ENCODING = 'utf-8'
 
 # pause crawler
-JOB_DIR='/Users/xianwu1/Documents/crawler/scrapy/Conversation/Conversation/tmp/spider_dir-1'
+JOB_DIR='/home/xianwu1/crawler/Conversation/Conversation/spider_dir-1'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'Conversation (+http://www.yourdomain.com)'
