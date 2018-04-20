@@ -18,7 +18,7 @@ class JDConversationSpider(CrawlSpider):
     name = "JDConversation"
     download_delay = 3
     start_urls = [
-        'http://list.jd.com/list.html?cat=1318,1466',
+        'http://list.jd.com/list.html?cat=670,671,672',
     ]
 
     def parse(self,response):
@@ -35,7 +35,7 @@ class JDConversationSpider(CrawlSpider):
                 print('--------------ERROR--------------')
 
             # find next page
-            time.sleep(20)
+            time.sleep(5)
             next_page = response.xpath('//a[@class="pn-next"]/@href').extract()
             if next_page:
                 next_page = "https://list.jd.com" + next_page[0]
