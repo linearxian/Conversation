@@ -14,8 +14,8 @@ from scrapy.utils.project import get_project_settings
 class PIDItem(scrapy.Item):
     PID = scrapy.Field()
 
-class JDConversationSpider(CrawlSpider):
-    name = "JDConversation"
+class PIDSpider(CrawlSpider):
+    name = "PIDspider"
     download_delay = 3
     start_urls = [
         'http://list.jd.com/list.html?cat=670,671,672',
@@ -47,7 +47,7 @@ class JDConversationSpider(CrawlSpider):
 def run():
     configure_logging()
     runner = CrawlerRunner(get_project_settings())
-    d = runner.crawl(JDConversationSpider)
+    d = runner.crawl(PIDSpider)
     d.addBoth(lambda _: reactor.stop())
     reactor.run() # the script will block here until the crawling is finished
 
