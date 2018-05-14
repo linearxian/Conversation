@@ -10,7 +10,7 @@ def parse_Product(p_id):
     title_old = []
     out_title = open("./Output/Title.txt", "a")
     out_review = open("./Output/Review.txt", "a")
-    while True:
+    while i < 10:
         with requests.session() as MySession:
             url = 'http://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv50941&productId={0}&score=0&sortType=5&page={1}&pageSize=10&isShadowSku=0&rid=0&fold=1'.format(p_id, i)
             try:
