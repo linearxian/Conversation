@@ -18,7 +18,7 @@ def getLink(pageNum):
     pageNum = pageNum + 1
     try:
         with requests.session() as MySession:
-            url = 'https://www.farfetch.com/cn/shopping/women/clothing-1/items.aspx?page={0}&view=90'.format(pageNum)
+            url = 'https://www.farfetch.com/cn/shopping/women/shoes-1/items.aspx?page=1&view=90&scale=315'.format(pageNum)
             response = MySession.get(url)
             root = html.fromstring(response.content)
             links = root.xpath("//a[@itemprop='url']/@href")
@@ -38,7 +38,7 @@ class farfetchSpider(CrawlSpider):
     download_delay = 3
 
     def start_requests(self):
-        for i in range(1012):
+        for i in range(278):
             links = getLink(i)
             if links:
                 for link in links:

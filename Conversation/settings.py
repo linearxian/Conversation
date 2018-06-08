@@ -14,25 +14,27 @@ BOT_NAME = 'Conversation'
 SPIDER_MODULES = ['Conversation.spiders']
 NEWSPIDER_MODULE = 'Conversation.spiders'
 
+# FEED_URI = '/Users/xianwu1/Documents/crawler/scrapy/Conversation/Conversation/tmp/result.json'
 FEED_URI = '/home/xianwu1/crawler/result.json'
 FEED_FORMAT = 'json'
 FEED_EXPORT_ENCODING = 'utf-8'
 
 # pause crawler
+# JOB_DIR='/Users/xianwu1/Documents/crawler/scrapy/Conversation/Conversation/tmp/spider_dir-1'
 JOB_DIR='/home/xianwu1/crawler/Conversation/Conversation/spider_dir-1'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'Conversation (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/60.0.3112.78 Chrome/60.0.3112.78 Safari/537.36'
 
 # Retry
 RETRY_ENABLED = True
 RETRY_TIMES = 100
 
 # Download timeout
-DOWNLOAD_TIMEOUT = 150
+DOWNLOAD_TIMEOUT = 15
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 CONCURRENT_REQUESTS = 1
